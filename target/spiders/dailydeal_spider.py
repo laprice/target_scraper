@@ -15,17 +15,17 @@ class TargetSpider(BaseSpider):
             t = TargetItem()
             t['link'] = d.select(".//p[@class='siteLink']/a/@href").extract()
             t['product'] = d.select(".//p[@class='siteLink']/a/text()").extract()
-            t['price'] = d.select(".//p[@class='dealPrice']/text()").extract()
-            t['list_price'] = d.select(".//p[@class='originalPrice']/del/text()"
+            t['price'] = d.select(".//div[@class='dealPrice']/p/text()").extract()
+            t['list_price'] = d.select(".//p[@class='lstPrice']/del/text()"
                                        ).extract()
             deals.append(t)
         tiles = hxs.select("//div[@class='tileInfo']")
         for d in tiles:
             t = TargetItem()
-            t['link'] = d.select(".//p[@class='productTitle']/a/@href").extract()
-            t['product'] = d.select(".//p[@class='productTitle']/a/@title").extract()
-            t['price'] = d.select(".//p[@class='price']/text()").extract()
-            t['list_price'] = d.select(".//p[@class='listPrice']/del/text()"
-                                       ).extract()
+            t['link'] = d.select(".//span[@class='productTitle']/a/@href").extract()
+            t['product'] = d.select(".//span[@class='productTitle']/a/@title").extract()
+            t['price'] = d.select(".//p[@class='price']/text()").extract().pop().strip()
+            t['list_price'] = d.select(".//p[contains(@class,'listPrice')]/del/text()"
+                                       ).extract().pop().strip()
             deals.append(t)
         return deals
