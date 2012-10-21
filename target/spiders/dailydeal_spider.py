@@ -25,7 +25,7 @@ class TargetSpider(BaseSpider):
             t['link'] = d.select(".//span[@class='productTitle']/a/@href").extract()
             t['product'] = d.select(".//span[@class='productTitle']/a/@title").extract()
             t['price'] = d.select(".//p[@class='price']/text()").extract().pop().strip()
-            t['list_price'] = d.select(".//p[contains(@class,'listPrice')]/del/text()"
+            t['list_price'] = d.select(".//p[contains(@class,'lstPrice')]/del/text()"
                                        ).extract().pop().strip()
             deals.append(t)
         return deals
