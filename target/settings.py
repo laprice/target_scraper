@@ -12,4 +12,5 @@ BOT_VERSION = '1.0'
 SPIDER_MODULES = ['target.spiders']
 NEWSPIDER_MODULE = 'target.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
+#ITEM_PIPELINES = ['TargetPipeline']
 
